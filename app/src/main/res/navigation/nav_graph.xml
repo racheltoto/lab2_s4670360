@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/fragmentLogin">
+
+    <fragment
+        android:id="@+id/fragmentLogin"
+        android:name="com.example.lab2_s4670360.ui.fragmentLogin"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login" >
+        <action
+            android:id="@+id/action_fragmentLogin_to_fragmentDashboard"
+            app:destination="@id/fragmentDashboard" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentDashboard"
+        android:name="com.example.lab2_s4670360.ui.fragmentDashboard"
+        android:label="fragment_dashboard"
+        tools:layout="@layout/fragment_dashboard" >
+        <action
+            android:id="@+id/action_fragmentDashboard_to_fragmentDetail"
+            app:destination="@id/fragmentDetail" />
+        <action
+            android:id="@+id/action_fragmentDashboard_to_fragmentLogin"
+            app:destination="@id/fragmentLogin" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentDetail"
+        android:name="com.example.lab2_s4670360.ui.fragmentDetail"
+        android:label="fragment_detail"
+        tools:layout="@layout/fragment_detail" >
+        <action
+            android:id="@+id/action_fragmentDetail_to_fragmentDashboard"
+            app:destination="@id/fragmentDashboard" />
+        <action
+            android:id="@+id/action_fragmentDetail_to_fragmentLogin"
+            app:destination="@id/fragmentLogin" />
+    </fragment>
+</navigation>
