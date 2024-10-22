@@ -7,49 +7,90 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="16dp"
-    android:backgroundTint="#c7ecee">
+    android:backgroundTint="#F4835F">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="197dp"
         android:layout_marginBottom="16dp">
 
         <TextView
-            android:id="@+id/itemNametext"
+            android:id="@+id/event"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="15dp"
             android:text=""
             android:textAppearance="?attr/textAppearanceTitleMedium"
             android:textColor="#303F9F"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:text="Name" />
+            tools:text="Event" />
 
         <TextView
-            android:id="@+id/itemIdText"
+            android:id="@+id/startYear"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
+            android:layout_marginBottom="15dp"
             android:text=""
             android:textAppearance="?attr/textAppearanceBodyMedium"
             android:textColor="#303F9F"
-            app:layout_constraintStart_toStartOf="@id/itemNametext"
-            app:layout_constraintTop_toBottomOf="@id/itemNametext"
-            tools:text="ID: 2" />
+            app:layout_constraintBottom_toTopOf="@+id/endYear"
+            app:layout_constraintStart_toStartOf="@+id/event"
+            app:layout_constraintTop_toBottomOf="@id/event"
+            tools:text="Start Year: 1939" />
+
+        <TextView
+            android:id="@+id/endYear"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="15dp"
+            android:text=""
+            android:textAppearance="?attr/textAppearanceBodyMedium"
+            android:textColor="#303F9F"
+            app:layout_constraintStart_toStartOf="@+id/startYear"
+            app:layout_constraintTop_toBottomOf="@id/startYear"
+            tools:text="End Year: 1945" />
+
+        <TextView
+            android:id="@+id/location"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:layout_marginBottom="15dp"
+            android:text=""
+            android:textAppearance="?attr/textAppearanceBodyMedium"
+            android:textColor="#303F9F"
+            app:layout_constraintStart_toStartOf="@+id/endYear"
+            app:layout_constraintTop_toBottomOf="@+id/endYear"
+            tools:text="Location: Global" />
+
+        <TextView
+            android:id="@+id/keyFigure"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:layout_marginBottom="15dp"
+            android:text=""
+            android:textAppearance="?attr/textAppearanceBodyMedium"
+            android:textColor="#303F9F"
+            app:layout_constraintStart_toStartOf="@+id/location"
+            app:layout_constraintTop_toBottomOf="@+id/location"
+            tools:text="Key Figure: Winston Churchill" />
 
         <TextView
             android:id="@+id/detailsText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
+            android:layout_marginTop="15dp"
             android:text="More_details_are_available"
             android:textAppearance="?attr/textAppearanceBodyMedium"
             android:textColor="#00796B"
-            app:layout_constraintStart_toStartOf="@id/itemIdText"
-            app:layout_constraintTop_toBottomOf="@id/itemIdText"
-            tools:text="More details are available" />
+            app:layout_constraintStart_toStartOf="@+id/keyFigure"
+            app:layout_constraintTop_toBottomOf="@+id/keyFigure"
+            tools:text="More description are available" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/navigationButton"
@@ -57,9 +98,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
-            app:cornerRadius="8dp"
-            android:backgroundTint="#00BCD4"
+            android:backgroundTint="#FF5722"
             android:text="Show_data"
+            app:cornerRadius="8dp"
             app:layout_constraintBottom_toBottomOf="@id/detailsText"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@id/detailsText" />
