@@ -1,35 +1,37 @@
 package com.example.lab2_s4670360.ui
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
+import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.RecyclerView
 import com.example.lab2_s4670360.R
+import com.example.lab2_s4670360.data.ResponseItem
+import com.example.lab2_s4670360.recyclerview.HistoryAdapter
+import com.example.lab2_s4670360.viewmodel.DashVM
+import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
+// Purpose:
+// - Dashboard fragment to display a list of artworks using a RecyclerView
+// - Uses a ViewModel to fetch and observe the list of artworks
+// - Binds the artwork data to the RecyclerView using ArtAdapter
 
-/**
- * A simple [Fragment] subclass.
- * Use the [fragmentDashboard.newInstance] factory method to
- * create an instance of this fragment.
- */
+// Enable Hilt injection
+@AndroidEntryPoint
 class fragmentDashboard : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
+    // Initialized Dependency Injections
+    private val dashboardViewModel: DashVM by viewModels()
+    private lateinit var historyAdapter: HistoryAdapter
 
+    // Use the fragment_dashboard xml
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -38,23 +40,49 @@ class fragmentDashboard : Fragment() {
         return inflater.inflate(R.layout.fragment_dashboard, container, false)
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment fragmentDashboard.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            fragmentDashboard().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
+    // All the logic happen here
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        // Define the navigation function lambda using safeArgs
+        // Lambda is like passing a parameter in Java
+        val navigationFunctionLambda: (ResponseItem) -> Unit = { history ->
+
+            // Use safeArgs to navigate to details fragment, passing the artwork data
+//            val action = fragmentDashboardDirections.actionFragmentDashboardToFragmentDetail(
+//                event = history.eventName,
+//                startYear = history.startYear,
+//                endYear = history.endYear,
+//                location = history.location,
+//                keyFigure = history.keyFigure,
+//                detail = history.description
+//            )
+//
+//            // Navigate to action (Details)
+//            findNavController().navigate(action)
+        }
+
+        // Initialize recyclerViews from the fragment_dashboard ID
+        val recyclerView = view.findViewById<RecyclerView>(R.id.recyclerView)
+
+        // initialized artAdapter and pass function navigate lambda when clicked
+        historyAdapter = HistoryAdapter(navigationFunction = navigationFunctionLambda)
+
+        // Connect ArtAdapter to RecyclerView to displays data
+        recyclerView.adapter = historyAdapter
+
+        // Collect the artworkEntities flow and update RecyclerView
+        lifecycleScope.launch {
+            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
+                dashboardViewModel.artworkEntities.collect { artworks ->
+                    historyAdapter.submitList(artworks)
+                    // submitList -> in  ArtAdapter
                 }
             }
+        }
+
+        // Fetch the artworks when the fragment is created
+        dashboardViewModel.fetchArtworks()
     }
 }
+
