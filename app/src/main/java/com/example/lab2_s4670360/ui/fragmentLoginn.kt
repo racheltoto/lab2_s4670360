@@ -35,7 +35,7 @@ class fragmentLoginn : Fragment() {
     private lateinit var passwordEditText: EditText
     private lateinit var errorTextView: TextView
 
-    // Use Hilt's ViewModel injection from LoginViewModel
+    // Use Hilt's ViewModel injection from LoginVM
     private val loginViewModel: LoginVM by viewModels()
 
     // Layout: fragment_login
@@ -75,11 +75,11 @@ class fragmentLoginn : Fragment() {
             } else {
                 // Using Coroutine lifecycleScope -> Lives until job is completed
                 // .launch -> don't need to return a result
-                // Call the login function in LoginViewModel
+                // Call the login function in LoginVM
                 lifecycleScope.launch {
 
                     // Successful condition
-                    // Calls loginViewModel() function from the LoginViewModel
+                    // Calls loginVM() function from the LoginVM
                     // Take username & password
                     // Wait for keypass to return
                     loginViewModel.login(username, password, onSuccess = { keypass ->
@@ -90,7 +90,7 @@ class fragmentLoginn : Fragment() {
                         navigateToDashboard()
 
                     }, onError = { errorMessage ->
-                        // Error condition - All in the LoginViewModel
+                        // Error condition - All in the LoginVM
                         errorTextView.text = "Login failed: $errorMessage"
                         errorTextView.visibility = View.VISIBLE
                     })

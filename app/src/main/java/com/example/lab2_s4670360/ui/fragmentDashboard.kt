@@ -19,9 +19,9 @@ import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
 // Purpose:
-// - Dashboard fragment to display a list of artworks using a RecyclerView
-// - Uses a ViewModel to fetch and observe the list of artworks
-// - Binds the artwork data to the RecyclerView using ArtAdapter
+// Dashboard fragment to display a list of history using a RecyclerView
+// Uses a ViewModel to fetch and observe the list of history event
+// Binds the history data to the RecyclerView using ArtAdapter
 
 // Enable Hilt injection
 @AndroidEntryPoint
@@ -48,7 +48,7 @@ class fragmentDashboard : Fragment() {
         // Lambda is like passing a parameter in Java
         val navigationFunctionLambda: (ResponseItem) -> Unit = { history ->
 
-            // Use safeArgs to navigate to details fragment, passing the artwork data
+            // Use safeArgs to navigate to details fragment, passing the history data
             val action = fragmentDashboardDirections.actionFragmentDashboardToFragmentDetail(
                 event = history.eventName,
                 startYear = history.startYear,
@@ -62,26 +62,26 @@ class fragmentDashboard : Fragment() {
             findNavController().navigate(action)
         }
 
-        // Initialize recyclerViews from the fragment_dashboard ID
+        // Initialize recyclerViews from the fragmentDashboard ID
         val recyclerView = view.findViewById<RecyclerView>(R.id.recyclerView)
 
-        // initialized artAdapter and pass function navigate lambda when clicked
+        // initialized historyAdapter and pass function navigate lambda when clicked
         historyAdapter = HistoryAdapter(navigationFunction = navigationFunctionLambda)
 
-        // Connect ArtAdapter to RecyclerView to displays data
+        // Connect historyAdapter to RecyclerView to displays data
         recyclerView.adapter = historyAdapter
 
-        // Collect the artworkEntities flow and update RecyclerView
+        // Collect the ResponseItem flow and update RecyclerView
         lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 dashboardViewModel.artworkEntities.collect { artworks ->
                     historyAdapter.submitList(artworks)
-                    // submitList -> in  ArtAdapter
+                    // submitList -> in  HistoryAdapter
                 }
             }
         }
 
-        // Fetch the artworks when the fragment is created
+        // Fetch the history when the fragment is created
         dashboardViewModel.fetchArtworks()
     }
 }
