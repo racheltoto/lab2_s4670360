@@ -1,4 +1,4 @@
-package com.example.api_project_aurelio.viewmodel
+package com.example.lab2_s4670360.viewmodel
 
 import android.content.Context
 import android.util.Log

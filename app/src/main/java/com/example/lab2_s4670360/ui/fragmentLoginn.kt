@@ -15,7 +15,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavOptions
 import androidx.navigation.fragment.findNavController
-import com.example.api_project_aurelio.viewmodel.LoginVM
+import com.example.lab2_s4670360.viewmodel.LoginVM
 import com.example.lab2_s4670360.R
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import dagger.hilt.android.AndroidEntryPoint

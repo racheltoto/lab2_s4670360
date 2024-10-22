@@ -1,6 +1,7 @@
 package com.example.lab2_s4670360.network
 
 import com.example.lab2_s4670360.data.RequestLogin
+import com.example.lab2_s4670360.data.ResponseApi
 import com.example.lab2_s4670360.data.ResponseLogin
 import retrofit2.http.Body
 import retrofit2.http.GET
@@ -14,10 +15,8 @@ interface ApiService {
     suspend fun login(@Body request: RequestLogin): ResponseLogin
 
 
-//    @GET("dashboard/history")
-//    suspend fun getHistory(
-//        @Header("Authorization") keypass: String
-//    ): ApiResponse
-//}
-
+    @GET("dashboard/history")
+    suspend fun getHistory(
+        @Header("Authorization") keypass: String
+    ): ResponseApi.ApiResponse
 }
