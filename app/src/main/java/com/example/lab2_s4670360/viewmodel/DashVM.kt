@@ -35,8 +35,8 @@ class DashVM @Inject constructor(
 
     // MutableStateFlow to hold artwork entities -> values can change
     // Starts of as empty list
-    private val _artworkEntities = MutableStateFlow<List<ResponseItem>>(emptyList())
-    val artworkEntities: StateFlow<List<ResponseItem>> = _artworkEntities
+    private val _historyEntities = MutableStateFlow<List<ResponseItem>>(emptyList())
+    val artworkEntities: StateFlow<List<ResponseItem>> = _historyEntities
 
     // Fetch artwork data from API
     fun fetchArtworks() {
@@ -49,7 +49,7 @@ class DashVM @Inject constructor(
 
                 if (!keypass.isNullOrEmpty()) {
                     val apiResponse = apiService.getHistory(keypass)
-                    _artworkEntities.value = apiResponse.entities
+                    _historyEntities.value = apiResponse.entities
                 }
 
             } // Handle errors here if needed

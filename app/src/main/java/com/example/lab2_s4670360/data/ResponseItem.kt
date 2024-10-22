@@ -12,7 +12,7 @@ import java.time.Year
 data class ResponseItem(
     @Json(name = "event") val eventName: String,
     @Json(name = "startYear") val startYear: Int,
-    @Json(name = "endYear") val endYear: String,
+    @Json(name = "endYear") val endYear: Int,
     @Json(name = "location") val location: String,
     @Json(name = "keyFigure") val keyFigure: String,
     @Json(name = "description") val description: String
