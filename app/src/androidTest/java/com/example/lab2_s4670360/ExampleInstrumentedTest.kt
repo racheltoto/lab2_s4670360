@@ -13,6 +13,7 @@ import org.junit.Assert.*
  *
  * See [testing documentation](http://d.android.com/tools/testing).
  */
+// useAppContext():This test method checks if the app context is correctly retrieved.
 @RunWith(AndroidJUnit4::class)
 class ExampleInstrumentedTest {
     @Test
