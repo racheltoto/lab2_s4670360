@@ -9,18 +9,18 @@ import com.example.lab2_s4670360.R
 import com.example.lab2_s4670360.data.ResponseItem
 
 // Purpose:
-// - Adapter to handle the display of artwork data in a RecyclerView
-// - Responsible for creating ViewHolder instances and binding data to the RecyclerView
+// Adapter handle the display of history data in a RecyclerView
+// Responsible for creating ViewHolder instances and binding data to the RecyclerView
 
 // Implementations:
-// - RecyclerView xml layout (fragment_dashboard)
-// - xml layout for ViewHolder (item_layout_restful_api_service xml)
-// - Create Adapter
-// - Create ViewHolder class
-// - ViewModel -> to manage data flow
-// - Set data in fragment
+// RecyclerView xml layout (fragment_dashboard)
+// xml layout for ViewHolder (item_layout_restful_api_service xml)
+// Create Adapter
+// Create ViewHolder class
+// ViewModel -> to manage data flow
+// Set data in fragment
 
-// Adapter class to manage the artwork data
+// Adapter class to manage the history data
 class HistoryAdapter(
     private var historyList: List<ResponseItem> = emptyList(),
 

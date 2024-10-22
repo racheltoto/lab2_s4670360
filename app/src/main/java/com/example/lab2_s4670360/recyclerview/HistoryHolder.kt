@@ -9,7 +9,7 @@ import com.example.lab2_s4670360.data.ResponseItem
 
 // Purpose:
 // - Holds references to the views for each RecyclerView item
-// - Binds artwork data to these views
+// - Binds history data to these views
 
 // ViewHolder class to hold references to views for each item
 class HistoryHolder(view: View) : RecyclerView.ViewHolder(view) {
@@ -24,7 +24,7 @@ class HistoryHolder(view: View) : RecyclerView.ViewHolder(view) {
     // Bind the data to the views
     @SuppressLint("SetTextI18n")
 
-    // Right: is from the ArtworkEntity Class
+    // Right: is from the ResponseItem(history) Class
     // Left: if from initialize item up there
     fun bind(history: ResponseItem) {
         event.text = history.eventName
