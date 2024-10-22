@@ -29,7 +29,7 @@ class HistoryHolder(view: View) : RecyclerView.ViewHolder(view) {
     fun bind(history: ResponseItem) {
         event.text = history.eventName
         startYear.text = "Start year: ${history.startYear}"
-        endYear.text = "End year: ${history.startYear}"
+        endYear.text = "End year: ${history.endYear}"
         slocation.text = history.location
         skeyFigure.text = history.keyFigure
     }
