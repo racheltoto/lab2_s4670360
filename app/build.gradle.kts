@@ -75,19 +75,6 @@ dependencies {
     // Hilt Framework - Dependency Injection
     implementation("com.google.dagger:hilt-android:2.51.1")
     kapt("com.google.dagger:hilt-android-compiler:2.51.1")
-    //
-    // Unit Testing Dependencies
-    testImplementation("io.mockk:mockk:1.13.12")
-    testImplementation("io.mockk:mockk-android:1.13.12")
-    testImplementation("io.mockk:mockk-agent-jvm:1.13.12")
-    // JUnit for local unit tests
-    testImplementation("junit:junit:4.13.2")
-    testImplementation("org.robolectric:robolectric:4.9")
-    // Instrumented tests dependencies (run on an Android device or emulator)
-    androidTestImplementation("io.mockk:mockk-android:1.13.12")
-    androidTestImplementation("io.mockk:mockk-agent:1.13.12")
-    androidTestImplementation("androidx.test.ext:junit:1.1.3")
-    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.6.4")
 }
 kapt {
     correctErrorTypes = true
