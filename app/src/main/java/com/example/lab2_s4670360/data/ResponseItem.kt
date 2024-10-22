@@ -8,6 +8,8 @@ import kotlinx.parcelize.Parcelize
 import java.time.Year
 
 //for recyclerview
+// This class can be used to model data received from an API, and it can be passed between Android components
+//      via intents or saved in bundles
 @Parcelize
 data class ResponseItem(
     @Json(name = "event") val eventName: String,
