@@ -9,28 +9,55 @@
         android:id="@+id/fragmentLogin"
         android:name="com.example.lab2_s4670360.ui.fragmentLoginn"
         android:label="fragment_login"
-        tools:layout="@layout/fragment_login" >
+        tools:layout="@layout/fragment_login">
         <action
             android:id="@+id/action_fragmentLogin_to_fragmentDashboard"
             app:destination="@id/fragmentDashboard" />
     </fragment>
+
     <fragment
         android:id="@+id/fragmentDashboard"
         android:name="com.example.lab2_s4670360.ui.fragmentDashboard"
         android:label="fragment_dashboard"
-        tools:layout="@layout/fragment_dashboard" >
+        tools:layout="@layout/fragment_dashboard">
+        <!-- add pop up because error -->
         <action
             android:id="@+id/action_fragmentDashboard_to_fragmentDetail"
-            app:destination="@id/fragmentDetail" />
+            app:destination="@id/fragmentDetail"
+
+            app:popUpTo="@id/fragmentDashboard"
+            app:popUpToInclusive="false"/>
         <action
             android:id="@+id/action_fragmentDashboard_to_fragmentLogin"
             app:destination="@id/fragmentLogin" />
     </fragment>
+
     <fragment
         android:id="@+id/fragmentDetail"
         android:name="com.example.lab2_s4670360.ui.fragmentDetail"
         android:label="fragment_detail"
-        tools:layout="@layout/fragment_detail" >
+        tools:layout="@layout/fragment_detail">
+
+        <!-- Arguments -->
+        <argument
+            android:name="event"
+            app:argType="string" />
+        <argument
+            android:name="startYear"
+            app:argType="integer" />
+        <argument
+            android:name="endYear"
+            app:argType="integer" />
+        <argument
+            android:name="location"
+            app:argType="string" />
+        <argument
+            android:name="keyFigure"
+            app:argType="string" />
+        <argument
+            android:name="detail"
+            app:argType="string" />
+
         <action
             android:id="@+id/action_fragmentDetail_to_fragmentDashboard"
             app:destination="@id/fragmentDashboard" />

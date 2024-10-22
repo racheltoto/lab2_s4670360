@@ -49,17 +49,17 @@ class fragmentDashboard : Fragment() {
         val navigationFunctionLambda: (ResponseItem) -> Unit = { history ->
 
             // Use safeArgs to navigate to details fragment, passing the artwork data
-//            val action = fragmentDashboardDirections.actionFragmentDashboardToFragmentDetail(
-//                event = history.eventName,
-//                startYear = history.startYear,
-//                endYear = history.endYear,
-//                location = history.location,
-//                keyFigure = history.keyFigure,
-//                detail = history.description
-//            )
-//
-//            // Navigate to action (Details)
-//            findNavController().navigate(action)
+            val action = fragmentDashboardDirections.actionFragmentDashboardToFragmentDetail(
+                event = history.eventName,
+                startYear = history.startYear,
+                endYear = history.endYear,
+                location = history.location,
+                keyFigure = history.keyFigure,
+                detail = history.description
+            )
+
+            // Navigate to action (Details)
+            findNavController().navigate(action)
         }
 
         // Initialize recyclerViews from the fragment_dashboard ID

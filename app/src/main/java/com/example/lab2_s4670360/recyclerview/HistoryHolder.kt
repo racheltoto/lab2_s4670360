@@ -19,8 +19,8 @@ class HistoryHolder(view: View) : RecyclerView.ViewHolder(view) {
     private val event: TextView = view.findViewById(R.id.event)
     private val startYear: TextView = view.findViewById(R.id.startYear)
     private val endYear: TextView = view.findViewById(R.id.endYear)
-    private val location: TextView = view.findViewById(R.id.location)
-    private val keyFigure: TextView = view.findViewById(R.id.keyFigure)
+    private val slocation = view.findViewById<TextView>(R.id.location)
+    private val skeyFigure: TextView = view.findViewById(R.id.keyFigure)
     // Bind the data to the views
     @SuppressLint("SetTextI18n")
 
@@ -28,9 +28,9 @@ class HistoryHolder(view: View) : RecyclerView.ViewHolder(view) {
     // Left: if from initialize item up there
     fun bind(history: ResponseItem) {
         event.text = history.eventName
-        startYear.text = history.startYear.toString()
-        endYear.text = history.endYear.toString()
-        event.text = history.location
-        event.text = history.keyFigure
+        startYear.text = "Start year: ${history.startYear}"
+        endYear.text = "End year: ${history.startYear}"
+        slocation.text = history.location
+        skeyFigure.text = history.keyFigure
     }
 }
