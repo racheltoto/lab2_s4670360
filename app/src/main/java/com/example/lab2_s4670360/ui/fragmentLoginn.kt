@@ -22,9 +22,9 @@ import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
 // Purpose:
-// - Handles the login UI
-// - Connects with LoginViewModel
-// - Handles navigation sign-in button
+// Handles the login UI
+// Connects with LoginViewModel
+// Handles navigation sign-in button
 
 // Enable Hilt injection
 @AndroidEntryPoint

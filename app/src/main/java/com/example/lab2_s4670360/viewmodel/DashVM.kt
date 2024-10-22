@@ -13,19 +13,19 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 // Purpose:
-// - Handles business logic for the Dashboard
-// - Fetches artwork data using the API and stores it in a MutableStateFlow
-// - Uses Hilt for dependency injection
+// Handles business logic for the Dashboard
+// Fetches history data using the API and stores it in a MutableStateFlow
+// Uses Hilt for dependency injection
 
 // Let Hilt know that this file will be Injected with dependencies
 @HiltViewModel
 
-// CLASS: LoginViewModel - DEPENDENCY INJECTION
+// CLASS: LoginVM - DEPENDENCY INJECTION
 class DashVM @Inject constructor(
 
     // DEPENDENCY INJECTIONS:
 
-    // - apiService: Injected for API calls <-- NetworkModule
+    // - ApiService: Injected for API calls <-- ModuleNetwork
     private val apiService: ApiService,
 
     // - appContext: Injected for accessing shared preferences <-- Built in
@@ -33,12 +33,12 @@ class DashVM @Inject constructor(
 
 ) : ViewModel() {
 
-    // MutableStateFlow to hold artwork entities -> values can change
+    // MutableStateFlow to hold history entities -> values can change
     // Starts of as empty list
     private val _historyEntities = MutableStateFlow<List<ResponseItem>>(emptyList())
     val artworkEntities: StateFlow<List<ResponseItem>> = _historyEntities
 
-    // Fetch artwork data from API
+    // Fetch history data from API
     fun fetchArtworks() {
 
         // Coroutine

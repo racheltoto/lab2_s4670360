@@ -14,22 +14,22 @@ import java.io.IOException
 import javax.inject.Inject
 
 // Purpose:
-// - Handles logic & communicate with API
-// - Handles the login logic (try, catch (e: Exception)
-// - Connect between the UI (FragmentLogin & API call)
-// - Get the API service via Hilt Dependency Injection
-// - Error handling
-// - Also has Coroutines
+// Handles logic & communicate with API
+// Handles the login logic (try, catch (e: Exception)
+// Connect between the UI (FragmentLogin & API call)
+// Get the API service via Hilt Dependency Injection
+// Error handling
+// Also has Coroutines
 
 // Let Hilt know that this file will be Injected with dependencies
 @HiltViewModel
 
-// CLASS: LoginViewModel - DEPENDENCY INJECTION
+// CLASS: LoginVM - DEPENDENCY INJECTION
 class LoginVM @Inject constructor(
 
     // DEPENDENCY INJECTIONS:
 
-    // - apiService: Injected for API calls <-- NetworkModule
+    // - ApiService: Injected for API calls <-- ModuleNetwork
     private val apiService: ApiService,
 
     // - appContext: Injected for accessing shared preferences <-- Built in
@@ -38,9 +38,9 @@ class LoginVM @Inject constructor(
 ) : ViewModel() {
 
     // Function to handle login
-    // - Username & Password
-    // - onSuccess -> Indicates the condition for login successful
-    // - Unit -> Return type but not return a value
+    // Username & Password
+    // onSuccess -> Indicates the condition for login successful
+    // Unit -> Return type but not return a value
     fun login(username: String, password: String, onSuccess: (String) -> Unit, onError: (String) -> Unit) {
 
         // Launch coroutine in viewModelScope to handle background task
